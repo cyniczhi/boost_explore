@@ -1,0 +1,22 @@
+BasedOnStyle: Chromium
+
+AccessModifierOffset: -2
+IndentWidth: 2
+AlignEscapedNewlines: Right
+BinPackArguments: false
+IncludeBlocks: Regroup
+IndentCaseLabels: false
+PointerAlignment: Right
+Standard: c++20
+
+IncludeIsMainRegex: '(_test)?$'
+IncludeCategories:
+  # More generic dependencies precedes less generic dependencies.
+  - Regex: '<[[:alnum:]_]+>' # standard library
+    Priority: 1
+  - Regex: '[<"]boost[/.]' # asio
+    Priority: 2
+  - Regex: '<' # any other headers included as dependency
+    Priority: 3
+  # - Regex: '[<"]others/' # control plane definition
+  #  Priority: 4
